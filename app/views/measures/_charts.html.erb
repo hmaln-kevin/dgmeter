@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+
+  <body>
+    
+    <div id="power-id">
+        <p>
+        <%= column_chart power_charts_power_path, id: "chart-power", ytitle: "Power", refresh: 60, round: 2 %>
+        </p>
+    </div>
+    
+    <div id="energy-id" style="text-align: center">
+        <p id="title">Energy Consumption in <%= Time.now.strftime("%d/%m/%Y") %></p>
+        <p>
+          <center> Search by date: 
+          <input type="text" id="start_date">
+          <input type="text" id="end_date">
+          <input type="button" value="Show" onclick="by_user()">
+          <center>
+        </p>
+        <p>
+          <%= column_chart energy_charts_by_day_path, energy_chart_config %>
+        </p>
+    </div>
+    
+    <div>
+      <center>Show:
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <input type="button" value="Today" class="btn btn-primary" onclick="by_day()"/>
+          <input type="button" value="Week" class="btn btn-primary" onclick="by_week()"/>
+          <input type="button" value="Month" class="btn btn-primary" onclick="by_month()"/>
+          <input type="button" value="Year" class="btn btn-primary" onclick="by_year()"/>
+        </div>
+      </center>
+      
+      <script>
+        var chart = Chartkick.charts["chart-energy"];
+        function by_year(){
+          chart.updateData("/energy_charts/by_year");
+          document.getElementById('title').innerText = "Energy Consumption in <%= Time.now.year %>";
+        }
+        function by_day(){
+          chart.updateData("/energy_charts/by_day");
+          document.getElementById('title').innerText = "Energy Consumption in <%= Time.now.strftime("%d/%m/%Y") %>";
+        }
+        function by_week(){
+          chart.updateData("/energy_charts/by_week");
+          document.getElementById('title').innerText = "Energy Consumption starting in <%= DateTime.now.beginning_of_week.strftime("%d/%m") %>";
+        }
+        function by_month(){
+          chart.updateData("/energy_charts/by_month");
+          document.getElementById('title').innerText = "Energy Consumption in <%= I18n.t("date.month_names")[DateTime.now.month] %>";
+        }
+        function by_user(){
+          var startDate = $("#start_date").datepicker( "getDate" );
+          var endDate = $("#end_date").datepicker( "getDate" );
+          chart.updateData(`/energy_charts/by_user?start_day=${startDate}&end_day=${endDate}`);
+          document.getElementById('title').innerText = `Energy Consumption in ${startDate}`;
+        }
+        $(function() {
+            $( "#start_date" ).datepicker({
+                dateFormat: 'dd-mm-yy',
+                changeMonth: true,
+                changeYear: true,
+                onClose: function( selectedDate ) {
+                $( "#end_date" ).datepicker( "option", "minDate", selectedDate );
+                }
+            });
+            $( "#end_date" ).datepicker({
+                dateFormat: 'dd-mm-yy',
+                changeMonth: true,
+                changeYear: true,
+                onClose: function( selectedDate ) {
+                $( "#start_date" ).datepicker( "option", "maxDate", selectedDate );
+                }
+            });
+        });
+      </script>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Units</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Localization</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% current_user.units.each do |unit| %>
+      <tr>
+        <td><%= unit.description %></td>
+        <td><%= unit.localization %></td>
+        <td><%= link_to 'Show', unit %></td>
+        <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
+        <% if can? :create, Unit %>
+        <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if can? :create, Unit %>
+<%= link_to 'New Unit', new_unit_path %>
+<% end %>
+
+
+<%= link_to 'Report', report_path, target: "_blank" %>
+
+
+
+<%= select("unit", "unit_id", Unit.all.collect { |p| [ p.description, p.id ] }, { prompt: 'Select Unit' }) %>
+
+<%= select("device", "device_id", Device.all.collect { |p| [ p.description, p.id ] }, { prompt: 'Select Consumption Device' }) %>
+
+<%= select("device", "device_id", Device.all.collect { |p| [ p.description, p.id ] }, { prompt: 'Select Generation Device' }) %>
+

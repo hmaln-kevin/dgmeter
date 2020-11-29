@@ -1,0 +1,52 @@
+<%= form_with(model: measure, local: true) do |form| %>
+  <% if measure.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(measure.errors.count, "error") %> prohibited this measure from being saved:</h2>
+
+      <ul>
+      <% measure.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.text_field :date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :voltage %>
+    <%= form.text_field :voltage %>
+  </div>
+
+  <div class="field">
+    <%= form.label :current %>
+    <%= form.text_field :current %>
+  </div>
+
+  <div class="field">
+    <%= form.label :power %>
+    <%= form.text_field :power %>
+  </div>
+
+  <div class="field">
+    <%= form.label :energy %>
+    <%= form.text_field :energy %>
+  </div>
+
+  <div class="field">
+    <%= form.label :frequency %>
+    <%= form.text_field :frequency %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pf %>
+    <%= form.text_field :pf %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Submit" %>
+  </div>
+<% end %>

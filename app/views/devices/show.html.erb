@@ -1,0 +1,102 @@
+<p id="notice"><%= notice %></p>
+<!--
+<p>
+  <h3><%= @device.description %></h3>
+</p>
+
+<p>
+  <strong>Localization:</strong>
+  <%= @device.localization %>
+</p> 
+
+<%= link_to 'Edit', edit_device_path(@device) %> |
+<%= link_to 'Back', unit_path(@device.unit) %> -->
+
+
+
+
+<main>
+	<div class="container-fluid">
+		<h1 class="mt-4"><%= @device.unit.description %></h1>
+		<ol class="breadcrumb mb-4">
+			<li class="breadcrumb-item active">Device: <%= @device.description %></li>
+		</ol>
+		<div class="row">
+			<div class="col-xl-3 col-md-6">
+				<div class="card bg-primary text-white mb-4">
+					<div class="card-body">Energy Uses
+						<h5 class="card-title">____________________________________</h5>
+    					<p class="card-text">Energy today:</p>
+					</div>
+					
+					<div class="card-footer d-flex align-items-center justify-content-between">
+						<a class="small text-white stretched-link" href="#">View Details</a>
+						<div class="small text-white"><i class="fas fa-angle-right"></i></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-md-6">
+				<div class="card bg-warning text-white mb-4">
+					<div class="card-body">Maximum Demand</div>
+					<div class="card-footer d-flex align-items-center justify-content-between">
+						<a class="small text-white stretched-link" href="#">View Details</a>
+						<div class="small text-white"><i class="fas fa-angle-right"></i></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-md-6">
+				<div class="card bg-success text-white mb-4">
+					<div class="card-body">Voltage</div>
+					<div class="card-footer d-flex align-items-center justify-content-between">
+						<a class="small text-white stretched-link" href="#">View Details</a>
+						<div class="small text-white"><i class="fas fa-angle-right"></i></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-md-6">
+				<div class="card bg-info text-white mb-4">
+					<div class="card-body">Frequency</div>
+					<div class="card-footer d-flex align-items-center justify-content-between">
+						<a class="small text-white stretched-link" href="#">View Details</a>
+						<div class="small text-white"><i class="fas fa-angle-right"></i></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xl-6">
+				<div class="card mb-4">
+					<div class="card-header">
+						<i class="fas fa-chart-area mr-1"></i>
+						Energy Consumption in <%= @date_today %>
+					</div>
+          			<br>
+					<%= column_chart "/energy_charts/by_day?device=#{@device.id}", energy_chart_config %>
+				</div>
+			</div>
+			<div class="col-xl-6">
+				<div class="card mb-4">
+					<div class="card-header">
+						<i class="fas fa-chart-area mr-1"></i>
+						Measured Demand in <%= @date_today %>
+					</div>
+          			<br>
+					<%= column_chart "/power_charts/by_day?device=#{@device.id}", power_chart_config %>
+				</div>
+			</div>
+		</div>
+    <div class="input-group input-group-sm mb-3 justify-end justify-content-center">
+      <div class="input-group-prepend" id="button-addon3">
+        <input type="button" value="Today" class="btn btn-primary" onclick="by_day(<%= @device.id %>)"/>
+        <input type="button" value="Week" class="btn btn-primary" onclick="by_week(<%= @device.id %>)"/>
+        <input type="button" value="Month" class="btn btn-primary" onclick="by_month(<%= @device.id %>)"/>
+        <input type="button" value="Year" class="btn btn-primary" onclick="by_year(<%= @device.id %>)"/>
+        <input type="button" class="btn btn-outline-primary"/>  
+        <input type="button" value="Show between" class="btn btn-primary" onclick="by_user(<%= @device.id %>)">
+        <input type="text" id="start_date">
+        <input type="button" value="to" class="btn btn-primary"/>
+        <input type="text" id="end_date">
+      </div>
+    </div><br>
+</div>
+</main>

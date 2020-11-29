@@ -1,0 +1,42 @@
+<%= form_with(model: load, local: true) do |form| %>
+  <% if load.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(load.errors.count, "error") %> prohibited this load from being saved:</h2>
+
+      <ul>
+      <% load.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="custom-control custom-switch">
+    <%= form.check_box :state, class: "custom-control-input" %>
+    <%= form.label :state,  class: "custom-control-label"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :device %>
+    <%= form.select("device_id", Device.all.collect {|p| [ p.description, p.id ] }, { include_blank: 'Selecione...' }) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :load_topic %>
+    <%= form.select("load_topic_id", LoadTopic.all.collect {|p| [ p.description, p.id ] }, { include_blank: 'Selecione...' }) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :schedule %>
+    <%= form.datetime_select :schedule %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

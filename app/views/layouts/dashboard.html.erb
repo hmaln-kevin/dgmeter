@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DG METER</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--Supostamente do DataPicker corrigir ! -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- Icons supostamente deste link https://fontawesome.com/-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+  
+  </head>
+
+</html>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">DG Meter</a>
+            <!-- Navbar-->
+            <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0 ">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <%= link_to 'Edit User', edit_user_registration_path, class: "dropdown-item" %>
+                        <a class="dropdown-item" href="#">Activity Log</a>
+                        <div class="dropdown-divider"></div>
+                        <a><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "dropdown-item" %></a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                            
+                            
+                            <div class="sb-sidenav-menu-heading">Units</div>
+                            <!-- END TEST 1-->
+
+                            <% current_user.units.each do |unit| %>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUnit<%= unit.id%>" aria-expanded="false" aria-controls="collapseUnit<%= unit.id%>">
+                                <div class="sb-nav-link-icon"><i class="fas fa-building"></i></div>
+                                <%= unit.description %>
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+
+                            <div class="collapse" id="collapseUnit<%= unit.id%>" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                                <% unit.devices.each do |device|%>
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a class="nav-link collapsed" href="<%= "/devices/#{device.id}" %>">
+                                        <%=  device.description  %>
+                                        <!-- Action Cable will realtime update this feature -->
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-circle" style="color:<%= device.connection ? "#51cf66" : "#ff6b6b" %>;" id="statusDevice<%= device.id %>"></i></div>
+                                    </a>  
+                                </nav>
+                                <% end %>
+                            </div>
+                            <% end %>
+
+
+                            <div class="sb-sidenav-menu-heading">Settings</div>
+                            <a class="nav-link" href="<%= loads_path %>">
+                                <div class="sb-nav-link-icon"><i class="fas fa-toggle-on"></i></div>
+                                Loads
+                            </a>
+                            <a class="nav-link" href="tables.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-file-alt"></i></div>
+                                Reports
+                            </a>
+                            <a class="nav-link" href="tables.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Tables
+                            </a>
+                            <% if current_user.admin? %>
+                            <a class="nav-link" href="<%= users_path %>">
+                                <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                                Users
+                            </a>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        <%= current_user.name %>
+                    </div>
+                </nav>
+            </div>
+            
+            <div id="layoutSidenav_content">
+                <!-- Views -->
+                <%= yield %>
+                <!-- End Views -->
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Master's Project of Kevin R. Costa</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>

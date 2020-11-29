@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Load Topics</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Pin</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @load_topics.each do |load_topic| %>
+      <tr>
+        <td><%= load_topic.description %></td>
+        <td><%= load_topic.pin %></td>
+        <td><%= link_to 'Show', load_topic %></td>
+        <td><%= link_to 'Edit', edit_load_topic_path(load_topic) %></td>
+        <td><%= link_to 'Destroy', load_topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Load Topic', new_load_topic_path %>

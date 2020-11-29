@@ -1,0 +1,2 @@
+module LoadTopicsHelper
+end

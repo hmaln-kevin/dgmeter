@@ -1,0 +1,16 @@
+{
+  "name": "testing",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.5.2",
+    "font-awesome": "^4.6.1",
+    "fontawesome": "^5.6.3",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://kevinrcosta@bitbucket.org/kevinrcosta/client_meter.git",
+  "author": "Kevin Costa <kevincosta@alu.ufc.br>",
+  "license": "MIT"
+}

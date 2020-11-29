@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @measure.date %>
+</p>
+
+<p>
+  <strong>Voltage:</strong>
+  <%= @measure.voltage %>
+</p>
+
+<p>
+  <strong>Current:</strong>
+  <%= @measure.current %>
+</p>
+
+<p>
+  <strong>Power:</strong>
+  <%= @measure.power %>
+</p>
+
+<p>
+  <strong>Energy:</strong>
+  <%= @measure.energy %>
+</p>
+
+<p>
+  <strong>Frequency:</strong>
+  <%= @measure.frequency %>
+</p>
+
+<p>
+  <strong>Pf:</strong>
+  <%= @measure.pf %>
+</p>
+
+<%= link_to 'Edit', edit_measure_path(@measure) %> |
+<%= link_to 'Back', measures_path %>

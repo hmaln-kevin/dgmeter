@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @load_topic.description %>
+</p>
+
+<p>
+  <strong>Pin:</strong>
+  <%= @load_topic.pin %>
+</p>
+
+<%= link_to 'Edit', edit_load_topic_path(@load_topic) %> |
+<%= link_to 'Back', load_topics_path %>

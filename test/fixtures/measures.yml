@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: MyString
+  voltage: 1.5
+  current: 1.5
+  power: 1.5
+  energy: 1.5
+  frequency: 1.5
+  pf: 1.5
+
+two:
+  date: MyString
+  voltage: 1.5
+  current: 1.5
+  power: 1.5
+  energy: 1.5
+  frequency: 1.5
+  pf: 1.5

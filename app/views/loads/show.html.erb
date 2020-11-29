@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @load.description %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @load.state %>
+</p>
+
+<p>
+  <strong>Schedule:</strong>
+  <%= @load.schedule %>
+</p>
+
+<%= link_to 'Edit', edit_load_path(@load) %> |
+<%= link_to 'Back', loads_path %>
