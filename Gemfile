@@ -38,6 +38,8 @@ gem 'devise'
 
 gem 'mqtt'
 
+gem 'tty-spinner'
+
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'rails-ujs', '~> 0.1.0'
 gem 'bootstrap', '~> 5.0.0.alpha3'
