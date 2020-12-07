@@ -23,7 +23,7 @@ Thread.new do
             puts exception.message
             sleep(2)
             retry
-        rescue MQTT::ProtocolException => exception # rescue all ProtocolExceptions and reset the application
+        rescue MQTT::ProtocolException => exception # rescue all ProtocolExceptions and reset the application (execute loop do again)
             puts exception.message
             sleep(2)
             retry

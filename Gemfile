@@ -44,7 +44,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'rails-ujs', '~> 0.1.0'
 gem 'bootstrap', '~> 5.0.0.alpha3'
 
-  gem 'mailgun-ruby', '~>1.1.6'
+gem 'mailgun-ruby', '~>1.1.6'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

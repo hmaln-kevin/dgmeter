@@ -52,7 +52,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Mount Action Cable outside main process or domain
-  # config.action_cable.mount_path = nil
+  config.action_cable.mount_path = nil
   config.action_cable.url = 'wss://dgmeter.online/cable'
   # config.action_cable.allowed_request_origins = [ 'http://dgmeter.online', /http:\/\/dgmeter.*/ ]
   config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
