@@ -54,8 +54,8 @@ Rails.application.configure do
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
   config.action_cable.url = 'wss://dgmeter.online/cable'
-  config.action_cable.allowed_request_origins = [ 'http://dgmeter.online', /http:\/\/dgmeter.*/ ]
-  # config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
+  # config.action_cable.allowed_request_origins = [ 'http://dgmeter.online', /http:\/\/dgmeter.*/ ]
+  config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
 
   # config.web_console.whitelisted_ips = '10.0.2.2'
 
