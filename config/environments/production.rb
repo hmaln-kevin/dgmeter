@@ -57,7 +57,7 @@ Rails.application.configure do
   config.action_cable.allowed_request_origins = [ 'http://dgmeter.online', /http:\/\/dgmeter.*/ ]
   # config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
 
-  config.web_console.whitelisted_ips = '10.0.2.2'
+  # config.web_console.whitelisted_ips = '10.0.2.2'
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
