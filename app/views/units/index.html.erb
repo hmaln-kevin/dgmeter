@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Units</h1>
+<h1>Your Units</h1>
 
 <table>
   <thead>
@@ -31,15 +31,3 @@
 <% if can? :create, Unit %>
 <%= link_to 'New Unit', new_unit_path %>
 <% end %>
-
-
-<%= link_to 'Report', report_path, target: "_blank" %>
-
-
-
-<%= select("unit", "unit_id", Unit.all.collect { |p| [ p.description, p.id ] }, { prompt: 'Select Unit' }) %>
-
-<%= select("device", "device_id", Device.all.collect { |p| [ p.description, p.id ] }, { prompt: 'Select Consumption Device' }) %>
-
-<%= select("device", "device_id", Device.all.collect { |p| [ p.description, p.id ] }, { prompt: 'Select Generation Device' }) %>
-
