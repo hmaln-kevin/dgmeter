@@ -1,20 +1,4 @@
 <p id="notice"><%= notice %></p>
-<!--
-<p>
-  <h3><%= @device.description %></h3>
-</p>
-
-<p>
-  <strong>Localization:</strong>
-  <%= @device.localization %>
-</p> 
-
-<%= link_to 'Edit', edit_device_path(@device) %> |
-<%= link_to 'Back', unit_path(@device.unit) %> -->
-
-
-
-
 <main>
 	<div class="container-fluid">
 		<h1 class="mt-4"><%= @device.unit.description %></h1>
@@ -23,42 +7,35 @@
 		</ol>
 		<div class="row">
 			<div class="col-xl-3 col-md-6">
-				<div class="card bg-primary text-white mb-4">
-					<div class="card-body">Energy Uses
-						<h5 class="card-title">____________________________________</h5>
-    					<p class="card-text">Energy today:</p>
-					</div>
-					
-					<div class="card-footer d-flex align-items-center justify-content-between">
-						<a class="small text-white stretched-link" href="#">View Details</a>
-						<div class="small text-white"><i class="fas fa-angle-right"></i></div>
+				<div class="card bg-primary text-white mb-4 text-center">
+					<div class="card-body">
+						<h5 class="card-title">Energy Today</h5>
+						<!-- Take the energy used during the day and show to user-->
+    					<h1 class="card-text" id="nowEnergy<%= @device.id %>"><%= "#{@device.measures.where('created_at BETWEEN ? AND ?', DateTime.now.beginning_of_day+30.second, DateTime.now.end_of_day+30.second).sum(:energy)} kWh"%></h1>
 					</div>
 				</div>
 			</div>
 			<div class="col-xl-3 col-md-6">
-				<div class="card bg-warning text-white mb-4">
-					<div class="card-body">Maximum Demand</div>
-					<div class="card-footer d-flex align-items-center justify-content-between">
-						<a class="small text-white stretched-link" href="#">View Details</a>
-						<div class="small text-white"><i class="fas fa-angle-right"></i></div>
+				<div class="card bg-warning text-white mb-4 text-center">
+					<div class="card-body">
+						<h5 class="card-title">Maximum Demand Today</h5>
+					    <h1 class="card-text" id="maxDemand<%= @device.id %>"><%= "#{@device.measures.where('created_at BETWEEN ? AND ?', DateTime.now.beginning_of_day+30.second, DateTime.now.end_of_day+30.second).maximum(:power)} W"%></h1>
 					</div>
 				</div>
 			</div>
 			<div class="col-xl-3 col-md-6">
-				<div class="card bg-success text-white mb-4">
-					<div class="card-body">Voltage</div>
-					<div class="card-footer d-flex align-items-center justify-content-between">
-						<a class="small text-white stretched-link" href="#">View Details</a>
-						<div class="small text-white"><i class="fas fa-angle-right"></i></div>
+				<div class="card bg-success text-white mb-4 text-center">
+					<div class="card-body">
+						<h5 class="card-title">Last Voltage</h5>
+					    <h1 class="card-text" id="nowVoltage<%=@device.id %>"><%= "#{@device.measures.last.voltage} V"%></h1>
 					</div>
 				</div>
 			</div>
 			<div class="col-xl-3 col-md-6">
-				<div class="card bg-info text-white mb-4">
-					<div class="card-body">Frequency</div>
-					<div class="card-footer d-flex align-items-center justify-content-between">
-						<a class="small text-white stretched-link" href="#">View Details</a>
-						<div class="small text-white"><i class="fas fa-angle-right"></i></div>
+				<div class="card bg-info text-white mb-4 text-center">
+					<div class="card-body">
+						<h5 class="card-title">Last Frequency</h5>
+					    <h1 class="card-text" id="nowFrequency<%= @device.id %>"><%= "#{@device.measures.last.frequency} Hz" %></h1>
 					</div>
 				</div>
 			</div>

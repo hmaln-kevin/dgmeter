@@ -1,6 +1,6 @@
 App.room = App.cable.subscriptions.create "RoomChannel",
   connected: ->
-    console.log("Connected to RoomChannel")
+    # console.log("Connected to RoomChannel")
 
     # Called when the subscription is ready for use on the server
 
