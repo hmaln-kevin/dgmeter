@@ -1,21 +1,24 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <h1><%= @unit.description %></h1>
-</p>
+<main>
+  <div class="container-fluid">
+    <p>
+      <h1><%= @unit.description %></h1>
+    </p>
 
-<p>
-  <strong>Localization:</strong>
-  <%= @unit.localization %>
-</p>
+    <p>
+      <strong>Localization:</strong>
+      <%= @unit.localization %>
+    </p>
 
-<p>
-  <strong>Associated Devices:</strong>
-  <% @unit.devices.each do |name| %>
-    <%= link_to name.description, "/devices/#{name.id}", class:"btn btn-outline-primary"%>
-  <% end %>
-  <%="[Click to show graphs]"%>
-</p>
+    <p>
+      <strong>Associated Devices:</strong>
+      <% @unit.devices.each do |name| %>
+        <%= link_to name.description, "/devices/#{name.id}", class:"btn btn-outline-primary"%>
+      <% end %>
+      <%="[Click to show graphs]"%>
+    </p>
 
-<%= link_to 'Edit', edit_unit_path(@unit) %> | 
-<%= link_to 'Back', units_path %>
+    <p><%= link_to 'Edit', edit_unit_path(@unit), class:"btn btn-outline-dark" %> | 
+    <%= link_to 'Back', units_path, class:"btn btn-outline-dark" %></p>
+  </div>
+</main>

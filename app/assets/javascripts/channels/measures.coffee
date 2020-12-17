@@ -16,5 +16,9 @@ App.measures = App.cable.subscriptions.create "MeasuresChannel",
     nowVoltage.innerHTML = "#{message[3]} V"
     nowFrequency = document.getElementById("nowFrequency#{message[0]}")
     nowFrequency.innerHTML = "#{message[4]} Hz"
+    lastEnergy = document.getElementById("energy#{message[0]}")
+    lastEnergy.innerHTML = "#{message[5]}"
+    lastPower = document.getElementById("power#{message[0]}")
+    lastPower.innerHTML = "#{message[5]}"
 
 

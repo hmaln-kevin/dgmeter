@@ -9,6 +9,7 @@ class LoadsController < ApplicationController
   # GET /loads.json
   def index
     @loads = Load.all
+    @units = Unit.all
   end
 
   # GET /loads/1

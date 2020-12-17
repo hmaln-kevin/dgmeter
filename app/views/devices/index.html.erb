@@ -1,33 +1,52 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Devices</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Localization</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @devices.each do |device| %>
-    <% if can? :read, device %>
-      <tr>
-        <td><%= device.description %></td>
-        <td><%= device.localization %></td>
-        <td><%= link_to 'Show', device %></td>
-        <% if can? :destroy, device %>
-          <td><%= link_to 'Edit', edit_device_path(device) %></td>
-          <td><%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Devices</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Units</li>
+            <li class="breadcrumb-item active">Devices</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-body">
+              The devices shown below are the ones associated with units that you have authorization to see, any problem please contact the administration.
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-wifi mr-1"></i>
+                Devices
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Localization</th>
+                                <th colspan="3"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <% @devices.each do |device| %>
+                          <% if can? :read, device %>
+                            <tr>
+                              <td><%= device.description %></td>
+                              <td><%= device.localization %></td>
+                              <td><%= link_to 'Show', device, class:"btn btn-outline-primary" %></td>
+                              <% if can? :destroy, device %>
+                                <td><%= link_to 'Edit', edit_device_path(device), class:"btn btn-outline-primary" %></td>
+                                <td><%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-primary" %></td>
+                              <% end %>
+                            </tr>
+                          <% end %>  
+                          <% end %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <% if current_user.admin? %>
+          <p><%= link_to 'New Device', new_device_path, class:"btn btn-outline-dark" %></p>
         <% end %>
-      </tr>
-    <% end %>  
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Device', new_device_path %>
+    </div>
+</main>

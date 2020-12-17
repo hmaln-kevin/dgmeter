@@ -1,35 +1,58 @@
-<p id="notice"><%= notice %></p>
+<main>
+  <div class="container-fluid">
+    <h1 class="mt-4">Loads</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Units/Devices/Loads</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+          The loads shown below are the ones associated with devices that you have authorization to see, any problem please contact the administration.
+        </div>
+    </div>
 
-<h1>Loads</h1>
-<!--
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>State</th>
-      <th>Schedule</th>
-      <th>Topic</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @loads.each do |load| %>
-      <tr>
-        <td><%= load.description %></td>
-        <td><%= load.state %></td>
-        <td><%= load.schedule %></td>
-        <td><%= load.load_topic.description %></td>
-        <td><%= link_to 'Show', load %></td>
-        <td><%= link_to 'Edit', edit_load_path(load) %></td>
-        <td><%= link_to 'Destroy', load, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% @units.each do |unit| %>
+      <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-building mr-1"></i>
+            <%= unit.description %>
+        </div>
+        <div class="card-body">
+          <div class="row row-cols-1 row-cols-md-5">
+            <% unit.devices.each do |devices| %>
+              <% devices.loads.each do |load| %>
+                <% if can? :read, load %>
+                    <%= form_with(model: load, local: true) do |form| %>
+                        <div class="col mb-4">
+                        <div class="card text-center" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= load.description %></h5>
+                                <p class="card-text">
+                                    <div class="custom-control custom-switch">
+                                        <%= form.check_box :state, class: "custom-control-input", id: load.id %>
+                                        <%= form.label :state,  class: "custom-control-label", for: load.id %>
+                                    </div>
+                                    <div>
+                                        <% if current_user.admin? %>
+                                        <%= link_to 'Edit', edit_load_path(load) %>
+                                        <% end %>
+                                    </div>
+                                </p>
+                                <%= form.submit "Change", class: "btn btn-primary" %>
+                            </div>
+                        </div>
+                        </div>
+                    <% end %>
+                <% end %>
+              <% end %>  
+            <% end %>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
--->
-<% if can? :create, Load %>
-<%= link_to 'New Load', new_load_path %> <br>
-<% end %>
-<%= render 'switchs'%>
 
+    <% if can? :create, Load %>
+      <%= link_to 'New Load', new_load_path, class:"btn btn-outline-dark" %> <br>
+    <% end %>
+    <br>
+  </div>
+</main>
