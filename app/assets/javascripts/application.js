@@ -18,5 +18,5 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require scripts.js
-//= require bootstrap-growl-ifightcrime/jquery.bootstrap-growl
+//= require bootstrap-notify
 //= require_tree .
