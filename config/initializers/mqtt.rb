@@ -17,7 +17,7 @@ Thread.new do
                         # send the right information to real time update
                         nowEnergy = Measure.where('created_at BETWEEN ? AND ? AND device_id = ?', DateTime.now.beginning_of_day+30.second, DateTime.now.end_of_day+30.second, aux[6]).sum(:energy)
                         maxDemand = Measure.where('created_at BETWEEN ? AND ? AND device_id = ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day, aux[6]).maximum(:power)
-                        lastMeasure = Measure.where('device_id = ?', aux[6]).last.updated_at.strftime("Updated on %d %b at %I:%M")
+                        lastMeasure = Measure.where('device_id = ?', aux[6]).last.updated_at.strftime("Updated on %d %b at %H:%M")
                         ActionCable.server.broadcast 'measures_channel', message: [aux[6], nowEnergy, maxDemand, aux[0], aux[4], lastMeasure]
                     end
             
