@@ -121,11 +121,11 @@
 
 <% if notice %>
     <%= javascript_tag do %>
-        $.bootstrapGrowl('<%= notice %>', {
+        $.notify('<%= notice %>', {
         type: 'info',
         align: 'right',
         allow_dismiss: true,
-        stackup_spacing: 10
+        offset: 65,
         });
     <% end %>
  <% end %>
