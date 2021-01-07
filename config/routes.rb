@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'welcome', to: 'welcome#index'
   devise_for :users
   resources :users
   resources :units
@@ -7,8 +8,8 @@ Rails.application.routes.draw do
   resources :loads
   resources :measures
 
-  root to: 'units#index'
-  # out of use
+  root to: 'welcome#index'
+  # out of use remain only study proposes
   get 'import', to: 'measures#import'
   # route to generate reports
   get '/report', to: 'units#report'

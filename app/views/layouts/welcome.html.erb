@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DG METER</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'welcome', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= favicon_link_tag asset_path('favicon.png') %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>
+
+<% if notice %>
+    <%= javascript_tag do %>
+        $.notify('<%= notice %>', {
+        type: 'info',
+        align: 'right',
+        allow_dismiss: true,
+        offset: 65,
+        });
+    <% end %>
+ <% end %>

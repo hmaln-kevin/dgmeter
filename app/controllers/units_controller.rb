@@ -1,7 +1,7 @@
 class UnitsController < ApplicationController
+  before_action :authenticate_user!
   layout 'dashboard'
   load_and_authorize_resource
-  
   before_action :set_unit, only: [:show, :edit, :update, :destroy]
 
   require './lib/generate_pdf'

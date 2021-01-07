@@ -1,4 +1,5 @@
 class DevicesController < ApplicationController
+  before_action :authenticate_user!
   layout 'dashboard'
   load_and_authorize_resource
   

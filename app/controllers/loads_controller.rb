@@ -1,7 +1,7 @@
 class LoadsController < ApplicationController
+  before_action :authenticate_user!
   layout 'dashboard'
   load_and_authorize_resource
-  
   # before_action :test_connection, only: [:update]
   before_action :set_load, only: [:show, :edit, :update, :destroy]
 

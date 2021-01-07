@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   layout 'dashboard'
   load_and_authorize_resource
-  
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users

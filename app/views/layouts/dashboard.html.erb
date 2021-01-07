@@ -19,13 +19,15 @@
     <meta name="author" content="" />
     <!-- Icons supostamente deste link https://fontawesome.com/-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+
+    <%= favicon_link_tag asset_path('favicon.png') %>
   
   </head>
 
 </html>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="/">DG Meter</a>
+            <a class="navbar-brand" href="/"><%= image_tag "logoblk.png", width: "170px" %></a>
             <!-- Navbar-->
             <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0 ">
                 <li class="nav-item dropdown">

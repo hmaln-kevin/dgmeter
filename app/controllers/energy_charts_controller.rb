@@ -1,5 +1,5 @@
 class EnergyChartsController < ApplicationController
-  
+  before_action :authenticate_user!
   def by_day
     @device = params[:device]
     # correct the message delay problem, example message arrived 10:00:05 refers to 09:45 to 10:00, without this fix this message will be include in 10hrs period

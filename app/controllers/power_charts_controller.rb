@@ -1,5 +1,5 @@
 class PowerChartsController < ApplicationController
-
+  before_action :authenticate_user!
   def by_day
     @device = params[:device]
     @power_by_day = Measure.where('created_at BETWEEN ? AND ? AND device_id = ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day, @device).group_by_minute(:created_at, n:15, format: "%H:%M").maximum(:power)
