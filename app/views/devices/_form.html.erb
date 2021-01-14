@@ -26,6 +26,11 @@
     <%= form.select("unit_id", Unit.all.collect {|p| [ p.description, p.id ] }, { include_blank: 'Select...' }) %>
   </div>
 
+  <div class="field">
+    <%= form.label :type %>
+    <%= form.select("type_id", Type.all.collect {|p| [ p.function, p.id ] }, { include_blank: 'Selecione...' }) %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

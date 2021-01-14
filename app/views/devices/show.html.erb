@@ -9,7 +9,7 @@
 			<div class="col-xl-3 col-md-6">
 				<div class="card bg-primary text-white mb-4 text-center">
 					<div class="card-body">
-						<h5 class="card-title">Energy Today</h5>
+						<h5 class="card-title"><%= energy_type(@device) %></h5>
 						<!-- Take the energy used during the day and show to user-->
     					<h1 class="card-text" id="nowEnergy<%= @device.id %>"><%= "#{@device.measures.where('created_at BETWEEN ? AND ?', DateTime.now.beginning_of_day+30.second, DateTime.now.end_of_day+30.second).sum(:energy)} kWh"%></h1>
 					</div>
@@ -18,7 +18,7 @@
 			<div class="col-xl-3 col-md-6">
 				<div class="card bg-warning text-white mb-4 text-center">
 					<div class="card-body">
-						<h5 class="card-title">Maximum Demand Today</h5>
+						<h5 class="card-title"><%= power_type(@device) %></h5>
 					    <h1 class="card-text" id="maxDemand<%= @device.id %>"><%= "#{@device.measures.where('created_at BETWEEN ? AND ?', DateTime.now.beginning_of_day+30.second, DateTime.now.end_of_day+30.second).maximum(:power)} W"%></h1>
 					</div>
 				</div>
@@ -43,7 +43,7 @@
 		<div class="row">
 			<div class="col-xl-6">
 				<div class="card mb-4">
-					<div class="card-header">
+					<div class="card-header" id="title_energy">
 						<i class="fas fa-chart-area mr-1"></i>
 						Energy Consumption in <%= @date_today %>
 					</div>
@@ -54,7 +54,7 @@
 			</div>
 			<div class="col-xl-6">
 				<div class="card mb-4">
-					<div class="card-header">
+					<div class="card-header"  id="title_power">
 						<i class="fas fa-chart-area mr-1"></i>
 						Measured Demand in <%= @date_today %>
 					</div>

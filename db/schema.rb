@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_23_190708) do
+ActiveRecord::Schema.define(version: 2021_01_13_185715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 2020_09_23_190708) do
     t.datetime "updated_at", null: false
     t.bigint "unit_id"
     t.boolean "connection"
+    t.bigint "type_id"
+    t.index ["type_id"], name: "index_devices_on_type_id"
     t.index ["unit_id"], name: "index_devices_on_unit_id"
   end
 
@@ -74,6 +76,12 @@ ActiveRecord::Schema.define(version: 2020_09_23_190708) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "types", force: :cascade do |t|
+    t.string "function"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "units", force: :cascade do |t|
     t.string "description"
     t.string "localization"
@@ -102,6 +110,7 @@ ActiveRecord::Schema.define(version: 2020_09_23_190708) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "devices", "types"
   add_foreign_key "devices", "units"
   add_foreign_key "loads", "devices"
   add_foreign_key "measures", "devices"

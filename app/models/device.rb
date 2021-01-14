@@ -3,4 +3,5 @@ class Device < ApplicationRecord
     has_many :measures
     belongs_to :unit
     has_many :loads
+    belongs_to :type
 end

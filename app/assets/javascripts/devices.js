@@ -1,6 +1,6 @@
 var date = new Date();
 var d = date.getDate();
-var m = date.getUTCMonth();
+var m = (date.getMonth() + 1).toString().padStart(2, "0");
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 var month = months[date.getUTCMonth()];
 var year = date.getUTCFullYear();
@@ -21,14 +21,14 @@ function by_day(device){
 function by_week(device){
     Chartkick.charts["chart-energy"].updateData(`/energy_charts/by_week?device=${device}`);
     Chartkick.charts["chart-power"].updateData(`/power_charts/by_week?device=${device}`);
-    document.getElementById('title_energy').innerText = `Energy Consumption in this week`;
-    document.getElementById('title_power').innerText = `Measured Demand in this week`;
+    document.getElementById('title_energy').innerText = `Energy Consumption this week`;
+    document.getElementById('title_power').innerText = `Measured Demand this week`;
 }
 function by_month(device){
     Chartkick.charts["chart-energy"].updateData(`/energy_charts/by_month?device=${device}`);
     Chartkick.charts["chart-power"].updateData(`/power_charts/by_month?device=${device}`);
-    document.getElementById('title_energy').innerText = `Energy Consumption in ${month}`;
-    document.getElementById('title_power').innerText = `Measured Demand in ${month}`;
+    document.getElementById('title_energy').innerText = `Energy Consumption on ${month}`;
+    document.getElementById('title_power').innerText = `Measured Demand on ${month}`;
 }
 function by_user(device){
     var startDate = $("#start_date").datepicker( "getDate" );
