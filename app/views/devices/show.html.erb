@@ -64,17 +64,21 @@
 				</div>
 			</div>
 		</div>
-		<div class="input-group input-group-sm mb-3 justify-end justify-content-center">
+
+		<div class="input-group input-group-sm mb-3 justify-end justify-content-center ">
 		<div class="input-group-prepend" id="button-addon3">
+			<input type="button" value="Show between" class="btn btn-primary" onclick="by_user(<%= @device.id %>)">
+			<input type="text" class="form-control" id="start_date">
+			<input type="button" value="to" class="btn btn-primary"/>
+			<input type="text" class="form-control" id="end_date">
+		</div>
+		</div>
+		<div class="input-group input-group-sm mb-3">
+		<div class="input-group justify-end justify-content-center" id="button-addon3">
 			<input type="button" value="Today" class="btn btn-primary" onclick="by_day(<%= @device.id %>)"/>
 			<input type="button" value="Week" class="btn btn-primary" onclick="by_week(<%= @device.id %>)"/>
 			<input type="button" value="Month" class="btn btn-primary" onclick="by_month(<%= @device.id %>)"/>
 			<input type="button" value="Year" class="btn btn-primary" onclick="by_year(<%= @device.id %>)"/>
-			<input type="button" class="btn btn-outline-primary"/>  
-			<input type="button" value="Show between" class="btn btn-primary" onclick="by_user(<%= @device.id %>)">
-			<input type="text" id="start_date">
-			<input type="button" value="to" class="btn btn-primary"/>
-			<input type="text" id="end_date">
 		</div>
 		</div><br>
 	</div>
