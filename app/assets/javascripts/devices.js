@@ -37,7 +37,7 @@ function by_user(device){
     Chartkick.charts["chart-power"].updateData(`/power_charts/by_user?start_day=${startDate}&end_day=${endDate}&device=${device}`);
     document.getElementById('title_energy').innerText = `Energy Consumption in searched period`;
     document.getElementById('title_power').innerText = `Measured Demand in searched period`;
-  }
+}
 $(function() {
     $( "#start_date" ).datepicker({
         dateFormat: 'dd-mm-yy',
