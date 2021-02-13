@@ -25,10 +25,15 @@ class PowerChartsController < ApplicationController
   end
 
   def by_user
+    @device = params[:device]
     @start_date = params[:start_day].to_date
     @end_date = params[:end_day].to_date
-    @device = params[:device]
-    @power_by_user = Measure.where('created_at BETWEEN ? AND ? AND device_id = ?', @start_date.beginning_of_day, @end_date.end_of_day, @device).group_by_day(:date).maximum(:power)
+
+    if @start_date == @end_date
+      @power_by_user = Measure.where('created_at BETWEEN ? AND ? AND device_id = ?', @start_date.beginning_of_day, @start_date.end_of_day, @device).group_by_minute(:created_at, n:15, format: "%H:%M").maximum(:power)
+    else
+      @power_by_user = Measure.where('created_at BETWEEN ? AND ? AND device_id = ?', @start_date.beginning_of_day, @end_date.end_of_day, @device).group_by_day(:date).maximum(:power)  
+    end
     render json: @power_by_user
   end
 end

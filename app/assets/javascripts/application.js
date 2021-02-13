@@ -19,4 +19,5 @@
 //= require bootstrap-sprockets
 //= require scripts.js
 //= require bootstrap-notify
+//= require bootstrap-datepicker
 //= require_tree .

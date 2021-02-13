@@ -11,6 +11,8 @@ gem "chartkick"
 
 gem 'prawn-rails'
 
+gem 'bootstrap-datepicker-rails'
+
 gem 'groupdate'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
