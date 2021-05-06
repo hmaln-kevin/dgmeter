@@ -48,6 +48,7 @@
 						Energy Consumption in <%= @date_today %>
 					</div>
           			<br>
+					<!--Mudado de column para line -->
 					<%= column_chart "/energy_charts/by_day?device=#{@device.id}", energy_chart_config %>
 					<div class="card-footer small text-muted" id="energy<%= @device.id %>"><%= @device.measures.last.updated_at.strftime("Updated on %d %b at %H:%M") %></div>
 				</div>

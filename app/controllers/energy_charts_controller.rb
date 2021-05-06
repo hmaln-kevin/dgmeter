@@ -4,6 +4,8 @@ class EnergyChartsController < ApplicationController
     @device = params[:device]
     # correct the message delay problem, example message arrived 10:00:05 refers to 09:45 to 10:00, without this fix this message will be include in 10hrs period
     @energy_by_day = Measure.where('created_at BETWEEN ? AND ? AND device_id = ?', DateTime.now.beginning_of_day+30.second, DateTime.now.end_of_day+30.second, @device).group_by_hour_of_day(:created_at, day_start: 0.01).sum(:energy)
+    # @energy_by_day = Measure.where('created_at BETWEEN ? AND ? AND device_id = ?', DateTime.now.beginning_of_day+30.second, DateTime.now.end_of_day+30.second, @device).group(:id).group_by_minute(:created_at, format: "%H:%M").maximum(:current)
+    
     render json: @energy_by_day
     # filter by device
     # Measure.where(device: "1")
