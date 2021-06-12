@@ -3,7 +3,7 @@ module ApplicationHelper
        { 
         id: "chart-energy",
         # xtitle: "Time",
-        ytitle: "Energy(kWh)",
+        ytitle: "Energia(kWh)",
         # ytitle: "Current(A)",
         refresh: 120 ,
         round: 3,
@@ -16,7 +16,7 @@ module ApplicationHelper
         { 
          id: "chart-power",
          # xtitle: "Time",
-         ytitle: "Demand(W)",
+         ytitle: "Demanda(W)",
          # ytitle: "Voltage(V)",
          refresh: 120,
          round: 3,

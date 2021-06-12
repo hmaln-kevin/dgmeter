@@ -1,12 +1,13 @@
 <main>
   <div class="container-fluid">
-    <h1 class="mt-4">Loads</h1>
+    <h1 class="mt-4">Cargas</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Units/Devices/Loads</li>
+        <li class="breadcrumb-item active">Unidades/Dispositivos/Cargas</li>
     </ol>
     <div class="card mb-4">
         <div class="card-body">
-          The loads shown below are the ones associated with devices that you have authorization to see, any problem please contact the administration.
+          As cargas apresentadas abaixo são as associadas com os dispositivos que você tem autorização de ver, qualquer problema contate o administrador.
+          <!-- The loads shown below are the ones associated with devices that you have authorization to see, any problem please contact the administration. -->
         </div>
     </div>
 
@@ -28,8 +29,8 @@
                                 <h5 class="card-title"><%= load.description %></h5>
                                 <p class="card-text">
                                     <div class="custom-control custom-switch">
-                                        <%= form.check_box :state, class: "custom-control-input", id: load.id %>
-                                        <%= form.label :state,  class: "custom-control-label", for: load.id %>
+                                        <%= form.check_box :estado, class: "custom-control-input", id: load.id %>
+                                        <%= form.label :estado,  class: "custom-control-label", for: load.id %>
                                     </div>
                                     <div>
                                         <% if current_user.admin? %>
@@ -37,7 +38,7 @@
                                         <% end %>
                                     </div>
                                 </p>
-                                <%= form.submit "Change", class: "btn btn-primary" %>
+                                <%= form.submit "Enviar", class: "btn btn-primary" %>
                             </div>
                         </div>
                         </div>
@@ -51,7 +52,7 @@
     <% end %>
 
     <% if can? :create, Load %>
-      <%= link_to 'New Load', new_load_path, class:"btn btn-outline-dark" %> <br>
+      <%= link_to 'Nova Carga', new_load_path, class:"btn btn-outline-dark" %> <br>
     <% end %>
     <br>
   </div>

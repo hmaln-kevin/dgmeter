@@ -1,17 +1,17 @@
 module DevicesHelper
     def energy_type (device)
         if device.type_id == 1
-            return "Generation Today"
+            return "Geração Hoje"
         else
-            return "Consumption Today"
+            return "Consumo hoje"
         end
     end
 
     def power_type (device)
         if device.type_id == 1
-            return "Maximum Power Today"
+            return "Máxima Potência Hoje"
         else
-            return "Maximum Demand Today"
+            return "Máxima Demanda Hoje"
         end
     end
 end
