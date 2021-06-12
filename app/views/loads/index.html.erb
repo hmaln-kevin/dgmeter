@@ -29,8 +29,8 @@
                                 <h5 class="card-title"><%= load.description %></h5>
                                 <p class="card-text">
                                     <div class="custom-control custom-switch">
-                                        <%= form.check_box :estado, class: "custom-control-input", id: load.id %>
-                                        <%= form.label :estado,  class: "custom-control-label", for: load.id %>
+                                        <%= form.check_box :state, class: "custom-control-input", id: load.id %>
+                                        <%= form.label :state,  class: "custom-control-label", for: load.id %>
                                     </div>
                                     <div>
                                         <% if current_user.admin? %>
