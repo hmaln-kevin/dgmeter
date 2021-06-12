@@ -35,10 +35,10 @@ class EnergyChartsController < ApplicationController
     @device = params[:device]
     # improve this
     if @start_date == @end_date
-      @energy_by_user = Measure.where('created_at BETWEEN ? AND ? AND device_id = ?', @start_date.beginning_of_day+30.second, @start_date.end_of_day+30.second, @device).group_by_hour_of_day(:created_at, day_start: 0.01).average(:energy)
+      @energy_by_user = Measure.where('created_at BETWEEN ? AND ? AND device_id = ?', @start_date.beginning_of_day+30.second, @start_date.end_of_day+30.second, @device).group_by_hour_of_day(:created_at, day_start: 0.01).sum(:energy)
     else
-      # @energy_by_user = Measure.where('created_at BETWEEN ? AND ? AND device_id = ?', @start_date.beginning_of_day+30.second, @end_date.end_of_day+30.second, @device).group_by_day(:created_at, day_start: 0.01).sum(:energy)
-      @energy_by_user = Measure.where('created_at BETWEEN ? AND ? AND device_id = ?', @start_date.beginning_of_day+30.second, @end_date.end_of_day+30.second, @device).group_by_hour_of_day(:created_at, day_start: 0.01).average(:energy)
+      @energy_by_user = Measure.where('created_at BETWEEN ? AND ? AND device_id = ?', @start_date.beginning_of_day+30.second, @end_date.end_of_day+30.second, @device).group_by_day(:created_at, day_start: 0.01).sum(:energy)
+      # @energy_by_user = Measure.where('created_at BETWEEN ? AND ? AND device_id = ?', @start_date.beginning_of_day+30.second, @end_date.end_of_day+30.second, @device).group_by_hour_of_day(:created_at, day_start: 0.01).average(:energy)
     end
     render json: @energy_by_user
   end
