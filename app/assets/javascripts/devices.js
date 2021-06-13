@@ -9,14 +9,19 @@ var year = date.getUTCFullYear();
 function by_year(device){
     Chartkick.charts["chart-energy"].updateData(`/energy_charts/by_year?device=${device}`);
     Chartkick.charts["chart-power"].updateData(`/power_charts/by_year?device=${device}`);
+    Chartkick.charts["chart-fp"].updateData(`/fp_charts/by_year?device=${device}`);
+    Chartkick.charts["chart-voltage"].updateData(`/voltage_charts/by_year?device=${device}`);
     document.getElementById('title_energy').innerText = `Energy Consumption in ${year}`;
     document.getElementById('title_power').innerText = `Measured Demand in ${year}`;
+    document.getElementById('title_fp').innerText = `Power Factor in ${year}`;
+    document.getElementById('title_voltage').innerText = `Voltage in ${year}`;
 }
 function by_day(device){
     Chartkick.charts["chart-energy"].updateData(`/energy_charts/by_day?device=${device}`);
     Chartkick.charts["chart-power"].updateData(`/power_charts/by_day?device=${device}`);
     document.getElementById('title_energy').innerText = `Energy Consumption in ${d}/${m}/${year}`;
     document.getElementById('title_power').innerText = `Measured Demand in ${d}/${m}/${year}`;
+    // Atualizar aqui para os demais gráficos, não fiz por falta de tempo
 }
 function by_week(device){
     Chartkick.charts["chart-energy"].updateData(`/energy_charts/by_week?device=${device}`);

@@ -12,7 +12,7 @@ module ApplicationHelper
        }
     end
 
-    def power_chart_config
+   def power_chart_config
         { 
          id: "chart-power",
          # xtitle: "Time",
@@ -23,5 +23,31 @@ module ApplicationHelper
          name: Time.now.strftime("%d/%m/%Y"),
          messages: {empty: "No data"}
         }
-     end
+   end
+
+   def fp_chart_config
+      { 
+       id: "chart-fp",
+       # xtitle: "Time",
+       ytitle: "Fator",
+       # ytitle: "Voltage(V)",
+       refresh: 120,
+       round: 3,
+       name: Time.now.strftime("%d/%m/%Y"),
+       messages: {empty: "No data"}
+      }
+   end
+
+   def voltage_chart_config
+      { 
+       id: "chart-voltage",
+       # xtitle: "Time",
+       ytitle: "Voltage (V)",
+       # ytitle: "Voltage(V)",
+       refresh: 120,
+       round: 3,
+       name: Time.now.strftime("%d/%m/%Y"),
+       messages: {empty: "No data"}
+      }
+   end
 end

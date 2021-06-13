@@ -23,6 +23,20 @@ Rails.application.routes.draw do
     get "by_year"
     get "by_user"
   end
+  namespace :fp_charts do
+    get "by_day"
+    get "by_week"
+    get "by_month"
+    get "by_year"
+    get "by_user"
+  end
+  namespace :voltage_charts do
+    get "by_day"
+    get "by_week"
+    get "by_month"
+    get "by_year"
+    get "by_user"
+  end
   namespace :energy_charts do
     get "by_day"
     get "by_week"

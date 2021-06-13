@@ -63,6 +63,28 @@
 					<div class="card-footer small text-muted" id="power<%= @device.id %>"><%= @device.measures.last.updated_at.strftime("Atualizado em %d %b at %H:%M") %></div>
 				</div>
 			</div>
+			<div class="col-xl-6">
+				<div class="card mb-4">
+					<div class="card-header" id="title_fp">
+						<i class="fas fa-chart-area mr-1"></i>
+						Fator de potencia em <%= @date_today %>
+					</div>
+          			<br>
+					<%= column_chart "/fp_charts/by_day?device=#{@device.id}", fp_chart_config %>
+					<div class="card-footer small text-muted" id="energy<%= @device.id %>"><%= @device.measures.last.updated_at.strftime("Atualizado em %d %b at %H:%M") %></div>
+				</div>
+			</div>
+			<div class="col-xl-6">
+				<div class="card mb-4">
+					<div class="card-header" id="title_voltage">
+						<i class="fas fa-chart-area mr-1"></i>
+						Tensão medida em <%= @date_today %>
+					</div>
+          			<br>
+					<%= column_chart "/voltage_charts/by_day?device=#{@device.id}", voltage_chart_config %>
+					<div class="card-footer small text-muted" id="energy<%= @device.id %>"><%= @device.measures.last.updated_at.strftime("Atualizado em %d %b at %H:%M") %></div>
+				</div>
+			</div>
 		</div>
 
 		<div class="input-group input-group-sm mb-3 justify-end justify-content-center ">
